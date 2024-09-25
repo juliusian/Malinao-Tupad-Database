@@ -6,20 +6,21 @@ ini_set('display_errors', 1);
 $servername = "mysql.railway.internal";
 $username = "root";
 $password = "uObMekHbYpJIGxyhCHZqtHyQqaoUaSnn";
-$dbname = "railway"; // Ensure this is the correct database name
+$dbname = "railway";
+$port = "3306";
 
 // Create a connection to the database
-$conn = new mysqli($servername, $username, $password, $dbname, MYSQLPORT);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
+
 
 // Initialize response array
 $response = [];
 
 // Check if the connection was successful
 if ($conn->connect_error) {
-    $response['error'] = 'Connection failed: ' . $conn->connect_error;
-    header('Content-Type: application/json');
-    echo json_encode($response);
-    exit();
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully!";
 }
 
 // Get the search term from the request
