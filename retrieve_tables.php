@@ -3,13 +3,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database connection details
-$servername = "localhost";
+$servername = "mysql.railway.internal";
 $username = "root";
-$password = "";
-$dbname = "main_tupad_database";
+$password = "uObMekHbYpJIGxyhCHZqtHyQqaoUaSnn";
+$dbname = "railway";
 
 // Create a connection to the database
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, MYSQLPORT);
 
 // Check if the connection was successful
 if ($conn->connect_error) {
