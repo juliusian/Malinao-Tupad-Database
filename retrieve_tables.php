@@ -7,15 +7,16 @@ $servername = "mysql.railway.internal";
 $username = "root";
 $password = "uObMekHbYpJIGxyhCHZqtHyQqaoUaSnn";
 $dbname = "railway";
+$port = "3306";
 
 // Create a connection to the database
-$conn = new mysqli($servername, $username, $password, $dbname, MYSQLPORT);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Check if the connection was successful
 if ($conn->connect_error) {
-    header('Content-Type: application/json');
-    echo json_encode(['error' => 'Connection failed: ' . $conn->connect_error]);
-    exit();
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully!";
 }
 
 // Prepare the SQL query to retrieve all table names
